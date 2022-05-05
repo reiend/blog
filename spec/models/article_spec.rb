@@ -4,14 +4,16 @@ RSpec.describe Article, type: :model do
   let(:article1) do
     Article.new(
       title: 'Article I',
-      body: 'Article I\'s body'
+      body: 'Article I\'s body',
+      like: 1
     )
   end
 
   let(:article2) do
     Article.new(
       title: 'Article II',
-      body: 'Article II\'s body'
+      body: 'Article II\'s body',
+      like: 2
     )
   end
 
@@ -33,6 +35,7 @@ RSpec.describe Article, type: :model do
         expect(article1.title).to_not eql article2.title
       end
     end
+
     context 'body' do
       it '1, article must have body' do
         expect(article1.body).to_not be_nil
@@ -44,6 +47,12 @@ RSpec.describe Article, type: :model do
 
       it '3, article body length should be less than equal 140 but greater than equal 10' do
         expect(article1.body.size).to be <= 140 && be >= 10
+      end
+    end
+
+    context 'like' do
+      it '1, article like must be type Integer' do
+        expect(article1.like).to be_an Integer
       end
     end
   end
