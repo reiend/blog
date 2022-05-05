@@ -5,7 +5,8 @@ RSpec.describe Article, type: :model do
     Article.new(
       title: 'Article I',
       body: 'Article I\'s body',
-      like: 1
+      like: 1,
+      image: 'public/article1.png'
     )
   end
 
@@ -53,6 +54,16 @@ RSpec.describe Article, type: :model do
     context 'like' do
       it '1, article like must be type Integer' do
         expect(article1.like).to be_an Integer
+      end
+    end
+
+    context 'image' do
+      it '1, article image must be type string' do
+        expect(article1.image).to be_an String
+      end
+
+      it '2, article image must match any image file extention specified, (png|jpg|gif)' do
+        expect(article1.image).to match(/\.(png|jpg|gif)$/)
       end
     end
   end
