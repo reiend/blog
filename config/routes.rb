@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   # articles
-  get '/article', to: 'articles#index'
+  get 'articles', to: 'articles#index', as: 'articles'
+  get 'articles/new', to: 'articles#new', as: 'article_new'
+  get 'articles/:id', to: 'articles#show', as: 'article_show'
 end
