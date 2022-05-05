@@ -66,5 +66,6 @@ RSpec.describe Article, type: :model do
         expect(article1.image).to match(/\.(png|jpg|gif)$/)
       end
     end
+
   end
 end

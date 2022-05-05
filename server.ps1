@@ -35,9 +35,10 @@ function Invoke-Server
     {
       $User = "admin"
       $Password = "admin1234"
-      $DBname = "RubyBackend"
-
+      # $DBname = "RubyBackend"
+      $DBname = "blog_dev"
       $Query = Get-Content -Path .\postgres_query.sql -RAW
+
       psql -c "$($Query)" "user=$($User) dbname=$($DBname) password=$($Password)"
     }
 
@@ -53,7 +54,6 @@ function Invoke-Server
 
       CLEAR-HOST
     }
-
   }
 
   function Close-Server
@@ -78,5 +78,3 @@ function Invoke-Server
 }
 
 Invoke-Server
-
-
