@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   # articles
   get 'articles', to: 'articles#index', as: 'articles'
   get 'articles/new', to: 'articles#new', as: 'article_new'
+  post 'articles', to: 'articles#create', as: 'article_create'
   get 'articles/:id', to: 'articles#show', as: 'article_show'
 end

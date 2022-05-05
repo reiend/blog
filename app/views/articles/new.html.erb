@@ -2,7 +2,6 @@
 <main>
   <h1>New Blog</h1>
   <%= form_with model: @article do |form| %>
-
     <div>
       <%= form.label :title %>
       <%= form.text_field :title %>
@@ -22,5 +21,24 @@
       <%= form.submit %>
     </div>
   <% end %>
+  <div>
+    <% unless @article.errors.full_messages_for(:title).length.zero? %>
+      <% @article.errors.full_messages_for(:title).each do |message|  %>
+        <div> <%= message %> </div>
+      <% end %>
+    <% end %>
+  
+    <% unless @article.errors.full_messages_for(:body).length.zero? %>
+      <% @article.errors.full_messages_for(:body).each do |message|  %>
+        <div> <%= message %> </div>
+      <% end %>
+    <% end %>
+
+    <% unless @article.errors.full_messages_for(:image).length.zero? %>
+      <% @article.errors.full_messages_for(:image).each do |message|  %>
+        <div> <%= message %> </div>
+      <% end %>
+    <% end %>
+  </div>
 
 </main>
