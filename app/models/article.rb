@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Article's Template
 class Article < ApplicationRecord
   validates :body,
             presence: true,
