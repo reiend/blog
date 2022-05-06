@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    if @article.save!
+    if @article.save
       redirect_to articles_path
       # Todo determined why it is 200 instead 302 status
     else
