@@ -5,8 +5,7 @@ RSpec.describe Article, type: :model do
     Article.new(
       title: 'Article I',
       body: 'Article I\'s body',
-      like: 1,
-      image: 'public/article1.png'
+      like: 2
     )
   end
 
@@ -14,14 +13,14 @@ RSpec.describe Article, type: :model do
     Article.new(
       title: 'Article II',
       body: 'Article II\'s body',
-      like: 2
+      like: 3
     )
   end
 
   context 'Attributes' do
     context 'title' do
       it '1, article must have title' do
-        expect(article1.body).to_not be_nil
+        expect(article1.title).to_not be_nil
       end
 
       it '2, article title must have be type string  ' do
@@ -58,12 +57,11 @@ RSpec.describe Article, type: :model do
     end
 
     context 'image' do
-      it '1, article image must be type string' do
-        expect(article1.image).to be_an String
-      end
-
-      it '2, article image must match any image file extention specified, (png|jpg|gif)' do
-        expect(article1.image).to match(/\.(png|jpg|gif)$/)
+      it '1, article image must match any image file extention specified, (png|jpg|gif)' do
+        image = 'apple-touch-icon.png'
+        article1.image.attach(io: File.open("./spec/fixtures/files/#{image}"),
+                              filename: 'apple-touch-icon.png', content_type: 'image/png')
+        expect(article1.image).to match(/\.(png|jpg|gif)$/) unless article1.image
       end
     end
   end

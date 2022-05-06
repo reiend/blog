@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
       .permit(
         :title,
         :body,
+        :like,
         :image
       )
   end
