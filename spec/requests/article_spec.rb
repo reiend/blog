@@ -3,43 +3,47 @@ require 'rails_helper'
 RSpec.describe 'Article\'s Request', type: :request do
   describe 'GET' do
     describe '/articles/new' do
-      it 'returns the new page' do
+      before(:each) do
         get '/articles/new'
+      end
+      it 'success response' do
         expect(response).to have_http_status(200)
       end
       it 'render template new' do
-        get '/articles/new'
         expect(response).to render_template(:new)
+      end
+    end
+
+    describe '/articles/:id/edit' do
+      before(:each) do
+        article = Article.create(title: 'Article X', body: 'Article X\'s Body')
+        get "/articles/#{article.id}/edit"
+      end
+      it 'success response' do
+        expect(response).to have_http_status(200)
+      end
+      it 'render template edit' do
+        expect(response).to render_template(:edit)
       end
     end
   end
 
-  # # POT Category
-  # describe 'POST /categories' do
-  #   it 'creates a new category' do
-  #     post '/categories', params: { category: { title: 'New Category', description: 'Fresh na fresh' } }
-
-  #     expect(response).to have_http_status(302)
-  #   end
-  # end
-
-  # # Edit Category
-  # describe 'GET /categories/1/edit' do
-  #   it 'returns the edit page' do
-  #     category = Category.create!(title: 'New Category', description: 'Fresh na fresh')
-  #     get "/categories/#{category.id}/edit"
-
-  #     expect(response).to have_http_status(200)
-  #   end
-  # end
-
-  # # Show Category
-  # describe 'GET /categories/1/show' do
-  #   it 'returns the show page' do
-  #     category = Category.create!(title: 'Show Category', description: 'Fresh na fresh')
-  #     get "/categories/#{category.id}/show"
-
-  #     expect(response).to have_http_status(200)
-  #   end
-  # end
+  describe 'POST' do
+    describe '/articles' do
+      before(:each) do
+        get '/articles'
+      end
+      it 'creates a new article' do
+        post '/articles', params: {
+          article: {
+            title: 'Article V',
+            body: 'Article V\'s body'
+          }
+        }
+      end
+      it 'redirect response' do
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 end
