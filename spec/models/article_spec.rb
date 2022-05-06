@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Article, type: :model do
+RSpec.describe 'Article\'s Model', type: :model do
   let(:article1) do
     Article.new(
       title: 'Article I',
@@ -59,8 +59,11 @@ RSpec.describe Article, type: :model do
     context 'image' do
       it '1, article image must match any image file extention specified, (png|jpg|gif)' do
         image = 'apple-touch-icon.png'
-        article1.image.attach(io: File.open("./spec/fixtures/files/#{image}"),
-                              filename: 'apple-touch-icon.png', content_type: 'image/png')
+        article1.image.attach(
+          io: File.open("./spec/fixtures/files/#{image}"),
+          filename: 'apple-touch-icon.png',
+          content_type: 'image/png'
+        )
         expect(article1.image).to match(/\.(png|jpg|gif)$/) unless article1.image
       end
     end

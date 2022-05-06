@@ -1,10 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'ArticlesControllers', type: :request do
-  describe 'GET /articles/new' do
-    it 'returns the new page' do
-      get '/articles/new'
-      expect(response).to have_http_status(200)
+RSpec.describe 'Article\'s Request', type: :request do
+  describe 'GET' do
+    describe '/articles/new' do
+      it 'returns the new page' do
+        get '/articles/new'
+        expect(response).to have_http_status(200)
+      end
+      it 'render template new' do
+        get '/articles/new'
+        expect(response).to render_template(:new)
+      end
     end
   end
 

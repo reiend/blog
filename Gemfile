@@ -15,6 +15,8 @@ gem 'sprockets-rails'
 # use postgres
 gem 'pg'
 
+gem 'rails-controller-testing'
+
 # use ffi
 gem 'ffi'
 
