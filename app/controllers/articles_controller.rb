@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+  rescue StandardError
+    redirect_to articles_path
   end
 
   def new
@@ -19,7 +21,6 @@ class ArticlesController < ApplicationController
 
     if @article.save
       redirect_to articles_path
-      # Todo determined why it is 200 instead 302 status
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,6 +38,13 @@ class ArticlesController < ApplicationController
     else
       render :edit, status: unprocessable_entity
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path
   end
 
   private

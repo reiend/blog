@@ -3,7 +3,7 @@
 # Article's Template
 class Article < ApplicationRecord
   has_one_attached :image do |attachable|
-    attachable.variant :thumb, resize_to_limit: [100, 100]
+    attachable.variant :thumb, resize_to_limit: [100, 100] # thumbnail size
   end
 
   validates :body,
@@ -24,9 +24,12 @@ class Article < ApplicationRecord
 
   validate :image_type
 
+  private
+
+  # check if image file pass validation
   def image_type
-    if image.attached? && !image.content_type.in?(%w[image/jpg image/png image/gif])
-      errors.add(:image, '(png|jpg|gif) only')
-    end
+    is_image_attached = image.attached?
+    is_valid_image = !image.content_type.in?(%w[image/jpeg image/png image/gif])
+    errors.add(:image, '(png|jpg|gif) only') if is_image_attached && is_valid_image
   end
 end

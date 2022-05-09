@@ -4,20 +4,24 @@
     <%= form.text_field :title %>
   </div>
 
+</br>
   <div>
     <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
 
+</br>
   <div>
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
 
+</br>
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+</br>
 <div>
 
   <% unless article.errors.full_messages_for(:title).length.zero? %>
@@ -38,4 +42,6 @@
     <% end %>
   <% end %>
 </div>
+
+</br>
 <%= link_to "List of Blogs", articles_path %>

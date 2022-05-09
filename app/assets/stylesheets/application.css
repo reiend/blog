@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.blog-image {
+  max-width: 500px;
+}
