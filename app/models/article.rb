@@ -3,6 +3,7 @@
 # Article's Template
 class Article < ApplicationRecord
   has_many :comments
+
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100] # thumbnail size
   end
