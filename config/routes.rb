@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   # articles
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
+
   # get 'articles', to: 'articles#index', as: 'articles'
   # get 'articles/new', to: 'articles#new', as: 'article_new'
   # post 'articles', to: 'articles#create'
