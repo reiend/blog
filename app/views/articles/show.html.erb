@@ -23,21 +23,7 @@
     </ul>
   </div>
 
-  <div>
-    <h3>Comments</h3>
-
-    <% @article.comments.each do |comment| %>
-      <p>
-        <strong>Commenter:</strong>
-        <%= comment.commenter %>
-      </p>
-
-      <p>
-        <strong>Comment:</strong>
-        <%= comment.body %>
-      </p>
-    <% end %>
-  </div>
+  <%= render 'articles/partials/comment', comments: @article.comments  %>
 
   <div>
     <h3>Add Comments:</h3>
