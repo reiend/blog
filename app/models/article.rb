@@ -26,7 +26,14 @@ class Article < ApplicationRecord
 
   validate :image_type
 
+  VALID_STATUSES = %w[public private archived]
+  validates :status, inclusion: { in: VALID_STATUSES }
+
   private
+
+  def archived?
+    status == 'archived'
+  end
 
   # check if image file pass validation
   def image_type
