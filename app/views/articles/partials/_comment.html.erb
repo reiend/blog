@@ -1,0 +1,9 @@
+<div>
+  <% comments.each do |comment| %>
+    <p class="comment__container">
+      <span class="comment__author"> <%= comment.commenter %> </span> -
+      <span class="comment__text"> <%= comment.body %> </span>
+    </p>
+  <% end %>
+</div>
+<div>

@@ -1,2 +1,21 @@
-<h1>List of Blogs</h1>
-<%= render 'articles/partials/blogs', articles: @articles %>
+
+<div class="blog">
+  <div>
+    <div class="blog__heading">
+      <h1>My Blogs</h1>
+      <%= link_to "New Blog", new_article_path %>
+    </div>
+    <ul class="blog__list">
+      <% @articles.each do |article| %>
+        <li> 
+          <div>
+            <h3 class="blog__title"> <%= link_to article.title, article_path(article) %> </h3>
+            <p class="blog__info"> <%= article.body %> </p>
+          </div>
+        </li>
+        </br>
+      <% end %>
+    </br>
+    </ul>
+  </div>
+</div>

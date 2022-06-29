@@ -1,12 +1,60 @@
-<main>
-  <!-- blog content  -->
-  <%= render 'articles/partials/blog_content', article: @article %>
+<div class="show-blog">
+  <main>
+    <div>
+      <% begin %>
+        <%= image_tag @article.image, class: "blog-image" %>
+      <% rescue %>
+        <h4>No Image</h4>
+      <% end %>
 
-  <!-- comments  -->
-  <%= render 'comments/partials/comments', comments: @article.comments  %>
+      <div class="show-blog__info">
+        <h3 class="show-blog__heading"><%= @article.title %></h3>
+        <p><%= @article.body %></p>
+      </div>
 
-  <!-- comment form -->
-  <%= render 'comments/partials/form', article: @article %>
-</main>
-<br>
-<%= link_to "List of Blogs", articles_path %>
+      <ul class="show-blog__actions">
+        <li> <%= link_to "Edit", edit_article_path(@article) %> </li>
+        <li> 
+          <%= 
+            link_to "Delete", 
+            article_path(@article),
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: 'Are you sure',
+            }
+          %> 
+        </li> 
+
+      </ul>
+    </div>
+    <div class="comment">
+
+      <h3 class="comment__heading">Comments</h3>
+
+      <%= render 'articles/partials/comment', comments: @article.comments  %>
+      <div>
+        <h3 class="comment__add-heading">Add Comments:</h3>
+
+        <%= form_with model: [@article, @article.comments.build], class: "comment__form"  do  |form| %>
+          <p class="form__input">
+            <%= form.label :commenter, class: "comment__form-label "%>
+            <%= form.text_field :commenter %> 
+          </p>
+
+          <p class="form__input">
+            <%= form.label :body, class: "comment_form-label"%>
+            <%= form.text_area :body %>
+          </p>
+
+          <p class="form__button">
+            <%= form.submit %>
+          </p>
+        <% end %>
+      </div>
+    <div>
+      
+
+  </main>
+
+  <%= link_to "List of Blogs", articles_path, class: "list-of-blogs"%>
+</div>

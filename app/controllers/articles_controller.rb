@@ -56,8 +56,7 @@ class ArticlesController < ApplicationController
         :title,
         :body,
         :like,
-        :image,
-        :status
+        :image
       )
   end
 end

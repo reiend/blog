@@ -1,29 +1,29 @@
-<%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %>
+<%= form_with model: article, class: "form" do |form|%>
+  <div class="form__input">
+    <%= form.label :title, class: "form__label" %>
     <%= form.text_field :title %>
   </div>
 
-</br>
-  <div>
-    <%= form.label :body %>
+  <div class="form__input">
+    <%= form.label :body, class: "form__label"%>
     <%= form.text_area :body %>
   </div>
 
-</br>
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+  <div class="form__input">
+    <%= form.label :image, class: "form__label" %>
+
+    <div class="form__file">
+      <button class="btn">Upload a file</button>
+      <%= form.file_field :image %>
+    </div>
+
   </div>
 
-</br>
-  <div>
-    <%= form.submit %>
+  <div class="form__button">
+    <%= form.submit%>
   </div>
 <% end %>
-</br>
-<div>
-
+<div class="info">
   <% unless article.errors.full_messages_for(:title).length.zero? %>
     <% article.errors.full_messages_for(:title).each do |message|  %>
       <div> <%= message %> </div>
@@ -44,4 +44,4 @@
 </div>
 
 </br>
-<%= link_to "List of Blogs", articles_path %>
+<%= link_to "List of Blogs", articles_path, class: "list-of-blogs" %>

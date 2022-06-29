@@ -1,0 +1,83 @@
+@use "./reiend/scss/core";
+@use "./reiend/scss/core/responsive/breakpoints" as *;
+@use "./reiend/scss/core/utils/font" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.blog {
+  max-width: 1400px;
+  margin: 0 auto;
+  & > div {
+    margin-top: 15rem;
+    @extend .bg-platinum-L9;
+    padding: 5rem;
+    border-radius: 1rem;
+  }
+
+  &__heading {
+    margin-bottom: 5rem;
+    letter-spacing: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    & > h1 {
+      @extend .fsz-10;
+
+      @media only screen and (min-width: 0px) {
+        margin-bottom: 2rem;
+      }
+    }
+    & > a {
+      @extend .bg-kyanite-L2;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 1rem;
+      @extend .bg-\>hvr-kyanite-L3;
+      @extend .fw-6;
+    }
+
+    @media only screen and (min-width: 0px) {
+      flex-direction: column;
+    }
+
+    @media only screen and (min-width: 640px) {
+      flex-direction: row;
+    }
+  }
+  &__list {
+    li {
+      margin-bottom: 2rem;
+      border: 1px solid rgb(101, 160, 241, 0.05);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background-color: white;
+      box-shadow: 0 0 0 2px rgba(101, 160, 241, 0.5);
+    }
+  }
+
+  &__info {
+    margin-left: 2rem;
+  }
+
+  &__title {
+    & a {
+      display: block;
+      margin-bottom: 1.5rem;
+      text-transform: capitalize;
+    }
+
+    & a:visited {
+      color: black;
+    }
+    & a:link {
+      color: black;
+      @extend .fc-\>hvr-kyanite-L4;
+    }
+
+    & a:visited:hover {
+      @extend .fc-\>hvr-kyanite-L4;
+    }
+  }
+}

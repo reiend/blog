@@ -1,0 +1,137 @@
+@use "./reiend/scss/core";
+@use "./reiend/scss/core/responsive/breakpoints" as *;
+@use "./reiend/scss/core/utils/font" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.new-blog {
+  max-width: 768px;
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @extend .bg-platinum-L9;
+  padding: 5rem;
+  border-radius: 1rem;
+
+  &__heading {
+    @extend .fsz-10;
+    margin-bottom: 6.5rem;
+    text-align: center;
+    @extend .fc-kyanite-L5;
+  }
+}
+
+.form {
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: white;
+  &__label {
+    @extend .fsz-4;
+
+    margin-bottom: 3rem;
+    @media only screen and (min-width: 640px) {
+      margin-bottom: none;
+    }
+  }
+
+  & .field_with_errors:nth-child(2n) {
+    width: 80%;
+    input[type="text"],
+    textarea {
+      @media only screen and (min-width: 640px) {
+        width: 100%;
+      }
+    }
+    border: 1px solid crimson;
+  }
+
+  &__input {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & input[type="text"],
+    textarea {
+      width: 100%;
+      border-radius: 1rem;
+      font-size: 2rem;
+      padding: 1rem;
+      background-color: rgb(248, 247, 247);
+      @media only screen and (min-width: 640px) {
+        width: 80%;
+      }
+    }
+
+    @media only screen and (min-width: 640px) {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+  &__file {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    & > button {
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      @extend .bg-kyanite-L5;
+      cursor: pointer;
+      width: 100%;
+      display: block;
+
+      @media only screen and (min-width: 640px) {
+        display: inline-block;
+        width: auto;
+      }
+    }
+
+    & > input[type="file"] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+  }
+  &__button input[type="submit"] {
+    color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    @extend .bg-kyanite-D1;
+    cursor: pointer;
+    width: 100%;
+
+    @media only screen and (min-width: 640px) {
+      width: auto;
+    }
+  }
+}
+
+.list-of-blogs {
+  @extend .fsz-2;
+  @extend .fw-5;
+  display: block;
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.info {
+  margin-top: 2rem;
+  @extend .bg-ruby-L10;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  & > div {
+    padding: 0.5rem 1rem;
+  }
+}
+
